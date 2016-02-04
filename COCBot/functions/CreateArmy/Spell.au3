@@ -107,7 +107,7 @@ Func BrewSpells()
 			EndIf
 		EndIf
 
-		If $numFactoryDarkSpellAvaiables = 1 And ($PoisonSpellComp > 0 Or $HasteSpellComp > 0) Then
+		If $numFactoryDarkSpellAvaiables = 1 And ($PoisonSpellComp > 0 Or $EarthSpellComp > 0) Then
 			$iBarrHere = 0
 			While Not (isDarkSpellFactory())
 				If Not (IsTrainPage()) Then Return
@@ -141,27 +141,28 @@ Func BrewSpells()
 					EndIf
 				EndIf
 
-				If $HasteSpellComp > 0 Then ; Haste Spells
-					$TempHasteSpell = Number(getBarracksTroopQuantity(175 + 107 * 2, 296 + $midOffsetY))
-					Local $HasteSpell = $HasteSpellComp - ($CurHasteSpell + $TempHasteSpell)
-					If $debugSetlog = 1 Then SetLog("Making Haste Spell: " & $HasteSpell)
+				If $EarthSpellComp > 0 Then ; Earth Spells
+					$TempEarthSpell = Number(getBarracksTroopQuantity(175 + 107 * 1, 325))
+					Local $EarthSpell = $EarthSpellComp - ($CurEarthSpell + $TempEarthSpell)
+					If $debugSetlog = 1 Then SetLog("Making Earth Spell: " & $EarthSpell)
 					If _sleep($iDelayTrain2) Then Return
-					If $TempHasteSpell = 0 Then
+					If $TempEarthSpell = 0 Then
 						If _sleep($iDelayTrain2) Then Return
-						If _ColorCheck(_GetPixelColor(453, 375 + $midOffsetY, True), Hex(0xFFFFFF, 6), 20) = False Then ; black pixel in number 5
+						If _ColorCheck(_GetPixelColor(346, 375 + $midOffsetY, True), Hex(0xFFFFFF, 6), 20) = False Then ; black pixel in number 5
 							setlog("Not enough Elixir to create Spell", $COLOR_RED)
 							Return
 						ElseIf _ColorCheck(_GetPixelColor(200, 346 + $midOffsetY, True), Hex(0x414141, 6), 20) Then
 							setlog("Spell Factory Full", $COLOR_RED)
 							Return
 						Else
-							If $HasteSpell > 0 Then
-								GemClick(430, 354 + $midOffsetY, $HasteSpell, $iDelayTrain7, "#0290")
-								SetLog("Created " & $HasteSpell & " Haste Spell(s)", $COLOR_BLUE)
+							If $EarthSpell > 0 Then
+								GemClick(334, 354 + $midOffsetY, $EarthSpell, $iDelayTrain7, "#0290")
+								SetLog("Created " & $EarthSpell & " Earth Spell(s)", $COLOR_BLUE)
 							EndIf
 						EndIf
 					Else
-						Setlog("Already done Haste Spell(s)")
+						Setlog("Already done Earth Spell(s)")
+
 					EndIf
 				EndIf
 			Else

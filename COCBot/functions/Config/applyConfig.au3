@@ -967,7 +967,7 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	GUICtrlSetData($txtNumRageSpell, $RageSpellComp)
 	GUICtrlSetData($txtNumHealSpell, $HealSpellComp)
 	GUICtrlSetData($txtNumPoisonSpell, $PoisonSpellComp)
-	GUICtrlSetData($txtNumHasteSpell, $HasteSpellComp)
+	GUICtrlSetData($txtNumEarthSpell, $EarthSpellComp)
 	GUICtrlSetData($txtTotalCountSpell, $iTotalCountSpell)
 	lblTotalCountSpell()
 

@@ -1,0 +1,27 @@
+MyBot.run
+version 5.1.4
+MOD kodino ver 0.4.0 - beta 4
+authors: kowalsky, Odino.
+
+Disclaimer:
+This is a beta testing version. Please report bugs.
+This version comes with a ready to use profile for th9.
+kodino Extreme DE side Extreme EQ-GiBArch csv script is useful for TH9 with lv 6 giants.
+
+Changelog: 
+- Improved CSV attack and EQ spells positioning.
+- Fixed translation files for French, Portuguese, Turkish.
+
+Old changes:
+0.3.1 - fixed archers and barbarians deploy in kodino Extreme DE side EQ-GiBArch CSV attack script.
+0.3.0 - Create Earthquakes spells and use it in LB script attack.
+0.0.1 - Created kodino Extreme DE side EQ-GiBArch CSV attack script.
+
+To be done:
+- Edit some language files.
+
+Known bugs:
+- Attack starts even if 4 EQ spells are not available.
+- EQ spell in CC confuses the bot.
+- Heroes abilities are activated just after deploying them (only if both heroes are available, correct if only one).
+- Problem in deploying EQ spells if no hero is available for the battle (to be confirmed).

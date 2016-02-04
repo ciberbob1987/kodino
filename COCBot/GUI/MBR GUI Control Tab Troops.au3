@@ -336,18 +336,18 @@ Func lblTotalCount()
 
  Func lblTotalCountSpell()
 	; GUICtrlSetData($lblTotalCountSpell, GUICtrlRead($txtNumLightningSpell)*2 + GUICtrlRead($txtNumHealSpell)*2 + GUICtrlRead($txtNumRageSpell)*2 + GUICtrlRead($txtNumPoisonSpell) + GUICtrlRead($txtNumHasteSpell))
-	If (GUICtrlRead($txtNumLightningSpell)*2 + GUICtrlRead($txtNumHealSpell)*2 + GUICtrlRead($txtNumRageSpell)*2 + GUICtrlRead($txtNumPoisonSpell) + GUICtrlRead($txtNumHasteSpell)) < GUICtrlRead($txtTotalCountSpell)+1 Then
+	If (GUICtrlRead($txtNumLightningSpell)*2 + GUICtrlRead($txtNumHealSpell)*2 + GUICtrlRead($txtNumRageSpell)*2 + GUICtrlRead($txtNumPoisonSpell) + GUICtrlRead($txtNumEarthSpell)) < GUICtrlRead($txtTotalCountSpell)+1 Then
 		GUICtrlSetBkColor($txtNumLightningSpell, $COLOR_MONEYGREEN)
 		GUICtrlSetBkColor($txtNumHealSpell, $COLOR_MONEYGREEN)
 		GUICtrlSetBkColor($txtNumRageSpell, $COLOR_MONEYGREEN)
 		GUICtrlSetBkColor($txtNumPoisonSpell, $COLOR_MONEYGREEN)
-		GUICtrlSetBkColor($txtNumHasteSpell, $COLOR_MONEYGREEN)
+		GUICtrlSetBkColor($txtNumEarthSpell, $COLOR_MONEYGREEN)
 	Else
 		GUICtrlSetBkColor($txtNumLightningSpell, $COLOR_RED)
 		GUICtrlSetBkColor($txtNumHealSpell, $COLOR_RED)
 		GUICtrlSetBkColor($txtNumRageSpell, $COLOR_RED)
 		GUICtrlSetBkColor($txtNumPoisonSpell, $COLOR_RED)
-		GUICtrlSetBkColor($txtNumHasteSpell, $COLOR_RED)
+		GUICtrlSetBkColor($txtNumEarthSpell, $COLOR_RED)
 	EndIf
 
 	If GUICtrlRead($txtTotalCountSpell) = 0 then
@@ -355,18 +355,18 @@ Func lblTotalCount()
 		GUICtrlSetState($txtNumHealSpell, $GUI_DISABLE)
 		GUICtrlSetState($txtNumRageSpell, $GUI_DISABLE)
 		GUICtrlSetState($txtNumPoisonSpell, $GUI_DISABLE)
-		GUICtrlSetState($txtNumHasteSpell, $GUI_DISABLE)
+		GUICtrlSetState($txtNumEarthSpell, $GUI_DISABLE)
 		GUICtrlSetBkColor($txtNumLightningSpell, $COLOR_WHITE)
 		GUICtrlSetBkColor($txtNumHealSpell, $COLOR_WHITE)
 		GUICtrlSetBkColor($txtNumRageSpell, $COLOR_WHITE)
 		GUICtrlSetBkColor($txtNumPoisonSpell, $COLOR_WHITE)
-		GUICtrlSetBkColor($txtNumHasteSpell, $COLOR_WHITE)
+		GUICtrlSetBkColor($txtNumEarthSpell, $COLOR_WHITE)
 	Else
 		GUICtrlSetState($txtNumLightningSpell, $GUI_ENABLE)
 		GUICtrlSetState($txtNumHealSpell, $GUI_ENABLE)
 		GUICtrlSetState($txtNumRageSpell, $GUI_ENABLE)
 		GUICtrlSetState($txtNumPoisonSpell, $GUI_ENABLE)
-		GUICtrlSetState($txtNumHasteSpell, $GUI_ENABLE)
+		GUICtrlSetState($txtNumEarthSpell, $GUI_ENABLE)
 	EndIf
 
 EndFunc   ;==>lblTotalCountSpell

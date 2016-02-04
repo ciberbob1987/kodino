@@ -49,7 +49,7 @@ $sTxtLightning = GetTranslated(1,56, "Lightning")
 $sTxtHeal = GetTranslated(1,57, "Heal")
 $sTxtRage = GetTranslated(1,58, "Rage")
 $sTxtPoison = GetTranslated(1,59, "Poison")
-$sTxtHaste = GetTranslated(1,60, "Haste")
+$sTxtEarth = GetTranslated(1,60, "Earthquake")
 
 ;~ -------------------------------------------------------------
 ;~ Troops Tab
@@ -154,13 +154,23 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 			GUICtrlSetState($txtNumPoisonSpell, $GUI_DISABLE)
 			GUICtrlSetOnEvent(-1, "lblTotalCountSpell")
 		$lblTimesPoisonS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-#cs		$y +=25
+		$y +=25
 		GUICtrlCreateIcon ($pIconLib, $eIcnEarthquakeSpell, $x - 10, $y - 5, 24, 24)
+		$lblEarthSpell = GUICtrlCreateLabel($sTxtEarth & ":", $x + 20, $y, -1, -1)
+		$txtNumEarthSpell = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
+			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtEarth & " " & $sTxtSetSpell)
+			GUICtrlSetLimit(-1, 2)
+			GUICtrlSetState($txtNumEarthSpell, $GUI_DISABLE)
+			GUICtrlSetOnEvent(-1, "lblTotalCountSpell")
+		$lblTimesEarthS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
+#cs	
+		$y +=25
+	GUICtrlCreateIcon ($pIconLib, $eIcnEarthquakeSpell, $x - 10, $y - 5, 24, 24)
 		$lblEarthquakeSpell = GUICtrlCreateLabel("Earthquake:", $x + 20, $y, -1, -1)
 		$txtNumEarthquakeS = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, "Enter the No. of Poison Spells to make.")
 			GUICtrlSetLimit(-1, 2)
-#ce		$lblTimesEarthquakeS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
+		$lblTimesEarthquakeS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
 		$y +=25
 		GUICtrlCreateIcon ($pIconLib, $eIcnHasteSpell, $x - 10, $y - 5, 24, 24)
 		$lblHasteSpell = GUICtrlCreateLabel($sTxtHaste & ":", $x + 20, $y, -1, -1)
@@ -170,7 +180,7 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 			GUICtrlSetState($txtNumHasteSpell, $GUI_DISABLE)
 			GUICtrlSetOnEvent(-1, "lblTotalCountSpell")
 		$lblTimesHasteS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-
+#ce
 		$y +=25
 		$lblTotal = GUICtrlCreateLabel(GetTranslated(1,61, "Spells Capacity") & ":", $x - 20 , $y + 4, -1, -1, $SS_RIGHT)
 		$txtTotalCountSpell = GUICtrlCreateCombo("", $x + 80, $y , 35, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
