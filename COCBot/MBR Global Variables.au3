@@ -972,3 +972,14 @@ If $aCmdLine[0] > 1 Then
 		EndIf
 	Next
 EndIf
+
+; kodino
+Global $chkKingWait
+Global $chkQueenWait
+Global $chkWardenWait
+Global $chkEarthWait
+
+Global $iChkKingWait = 0
+Global $iChkQueenWait = 0
+Global $iChkWardenWait = 0
+Global $iChkEarthWait = 1

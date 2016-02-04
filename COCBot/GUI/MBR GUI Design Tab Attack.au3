@@ -218,29 +218,31 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	Local $x = 30, $y = 450
-	$grpRoyalAbilities = GUICtrlCreateGroup(GetTranslated(3,54, "Hero Abilities"), $x - 20, $y - 20, 450, 75)
-		;GUICtrlCreatePic (@ScriptDir & "\Icons\KingAbility.jpg", $x, $y - 3, 30, 47)
-		;GUICtrlCreatePic (@ScriptDir & "\Icons\QueenAbility.jpg", $x + 30, $y - 3, 30, 47)
-		;GUICtrlCreatePic (@ScriptDir & "\Icons\QueenAbility.jpg", $x + 60, $y - 3, 30, 47) ;change with Warden Icon
-		GUICtrlCreateIcon($pIconLib, $eIcnKingAbility, $x, $y-2, 24, 24)
-		GUICtrlCreateIcon($pIconLib, $eIcnQueenAbility, $x+ 30, $y-2, 24, 24)
-		GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x+ 15, $y + 25, 24, 24)
+	$grpRoyalAbilities = GUICtrlCreateGroup(GetTranslated(3,54, "Hero Abilities"), $x - 20, $y - 20, 225, 75)
+			;GUICtrlCreatePic (@ScriptDir & "\Icons\KingAbility.jpg", $x, $y - 3, 30, 47)
+			;GUICtrlCreatePic (@ScriptDir & "\Icons\QueenAbility.jpg", $x + 30, $y - 3, 30, 47)
+			;GUICtrlCreatePic (@ScriptDir & "\Icons\QueenAbility.jpg", $x + 60, $y - 3, 30, 47) ;change with Warden Icon
+			GUICtrlCreateIcon($pIconLib, $eIcnKingAbility, $x-15, $y-4, 24, 24)
+			GUICtrlCreateIcon($pIconLib, $eIcnQueenAbility, $x+ 10, $y-4, 24, 24)
+			GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x-2, $y+25, 24, 24)
 
-		$x += 60
-		$y -= 8
-		$radManAbilities = GUICtrlCreateRadio(GetTranslated(3,55, "Timed activation of Heroes Abilities after") & ":", $x, $y -1, -1, -1)
-			$txtTip = GetTranslated(3,56, "Activate the Ability on a timer.") & @CRLF & GetTranslated(3,57, "All Heroes are activated at the same time.")
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetState(-1, $GUI_UNCHECKED)
-		$radAutoAbilities = GUICtrlCreateRadio(GetTranslated(3,58, "Auto activate Heroes when they become weak (red zone)."), $x, $y + 19, -1, -1)
-		$txtTip = GetTranslated(3,59, "Activate the Ability when the Hero becomes weak.") & @CRLF & GetTranslated(3,60, "Heroes are checked and activated individually.")
+		$x += 50
+		$y -= 0
+		$radAutoAbilities = GUICtrlCreateRadio(GetTranslated(14,31, "Auto activate Heroes when they become weak (red zone)."), $x, $y-4, -1, -1)
+		$txtTip = GetTranslated(14,32, "Activate the Ability when the Hero becomes weak.") & @CRLF & GetTranslated(3,60, "Heroes are checked and activated individually.")
 		GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetState(-1, $GUI_CHECKED)
-		$txtManAbilities = GUICtrlCreateInput("9", $x + 260, $y, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$Y +=15
+		$radManAbilities = GUICtrlCreateRadio(GetTranslated(14,29, "Timed after") & ":", $x, $y -1, -1)
+			$txtTip = GetTranslated(14,56, "Activate the Ability on a timer.") & @CRLF & GetTranslated(14,30, "All Heroes are activated at the same time.")
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetState(-1, $GUI_UNCHECKED)
+					
+		$txtManAbilities = GUICtrlCreateInput("9", $x + 80, $y+3, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			$txtTip = GetTranslated(3,61, "Set the time in seconds for Timed Activation of Hero Abilities.")
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 2)
-		$lblRoyalAbilitiesSec = GUICtrlCreateLabel(GetTranslated(3,62, "sec."), $x + 295, $y + 3, -1, -1)
+		$lblRoyalAbilitiesSec = GUICtrlCreateLabel(GetTranslated(14,35, "sec."), $x + 115, $y + 4, -1, -1)
 		$y += 40
 		$chkUseWardenAbility = GUICtrlCreateCheckbox(GetTranslated(3,70, "Timed activation of Warden Ability after") & ":", $x, $y, -1, -1)
 			$txtTip = GetTranslated(3,71, "Use the ability of the Grand Warden on a timer.")
@@ -256,7 +258,36 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 		$lblWardenAbilitiesSec = GUICtrlCreateLabel(GetTranslated(3,62, -1), $x + 293, $y, -1, -1)
 			GUICtrlSetState(-1, $GUI_DISABLE+$GUI_HIDE)
 			GUICtrlSetColor (-1,$COLOR_RED)
-
-
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+	Local $x = 260, $y = 450
+	$grpKodinoHSW = GUICtrlCreateGroup(GetTranslated(20,13, "[kodino] Constrains for LB Search:"), $x - 20, $y - 20, 220, 75)
+		$x -= 10
+		GUICtrlCreateIcon($pIconLib, $eIcnKing, $x , $y, 24, 24)
+			$txtTip = GetTranslated(20,14, "Wait for your King for battle (if healing or upgrading, research will skip LB)")
+			GUICtrlSetTip(-1, $txtTip)
+		$chkKingWait = GUICtrlCreateCheckbox("", $x + 30, $y, 17, 17)
+			GUICtrlSetTip(-1, $txtTip)
+		$x += 50
+		GUICtrlCreateIcon($pIconLib, $eIcnQueen, $x, $y, 24, 24)
+			$txtTip = GetTranslated(20,15, "Wait for your Queen for battle (if healing or upgrading, research will skip LB)")
+			GUICtrlSetTip(-1, $txtTip)
+		$chkQueenWait = GUICtrlCreateCheckbox("", $x + 30, $y, 17, 17)
+			GUICtrlSetTip(-1, $txtTip)
+		$x +=50
+		GUICtrlCreateIcon($pIconLib, $eIcnWarden, $x, $y, 24, 24)
+			$txtTip = GetTranslated(20,16, "Wait for your Warden for battle (if healing or upgrading, research will skip LB)")
+			GUICtrlSetTip(-1, $txtTip)
+		$chkWardenWait = GUICtrlCreateCheckbox("", $x + 30, $y, 17, 17)
+			GUICtrlSetTip(-1, $txtTip)
+		$x +=50
+		GUICtrlCreateIcon($pIconLib, $eIcnEarthQuakeSpell, $x, $y, 24, 24)
+			$txtTip = GetTranslated(20,17, "Wait for 4 Earthquake Spells for battle (if less, research will skip LB)")
+			GUICtrlSetTip(-1, $txtTip)
+		$chkEarthWait = GUICtrlCreateCheckbox("1", $x + 30, $y, 17, 17)
+			GUICtrlSetTip(-1, $txtTip)
+		$y +=25
+		$labelHSW = GUICtrlCreateLabel(GetTranslated(20,18, "Pay attention in checking heroes!") & @CRLF & GetTranslated(20,19, "It may requires long time between attacks."), $x -150, $y, -1, -1, $SS_LEFT)
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
+	
 GUICtrlCreateTabItem("")

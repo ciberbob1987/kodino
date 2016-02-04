@@ -195,11 +195,30 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			EndIf
 			ExitLoop
 		ElseIf $match[$LB] And Not $dbBase Then
-			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-			SetLog("      " & "Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
-			$logwrited = True
-			$iMatchMode = $LB
-			ExitLoop
+			; SetLog("[kodino] CurEarthSpell: " & $CurEarthSpell, $COLOR_PURPLE) ;kodino debug
+			
+			If ($iChkEarthWait = 1) And ($CurEarthSpell < 4) Then
+				SetLog("[kodino] not enough EQ spells for LB attack!" , $COLOR_RED) ;kodino
+			Else
+				If ($iChkKingWait = 1) And ($BarbarianKingAvailable = 0) Then
+					SetLog("[kodino] king not available for LB attack!" , $COLOR_RED) ;kodino
+				Else
+					If ($iChkQueenWait = 1) And ($ArcherQueenAvailable = 0) Then
+						SetLog("[kodino] queen not available for LB attack!" , $COLOR_RED) ;kodino
+					Else
+						If ($iChkWardenWait = 1)  And ($GrandWardenAvailable = 0) Then
+							SetLog("[kodino] warden not available for LB attack!" , $COLOR_RED) ;kodino
+						Else
+							SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+							SetLog("      " & "Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
+							$logwrited = True
+							$iMatchMode = $LB
+							ExitLoop
+						EndIf
+					EndIf
+				EndIf
+			EndIf
+						
 		ElseIf $match[$LB] Or $match[$DB] Then
 			If $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
 				If $SearchTHLResult = 1 Then

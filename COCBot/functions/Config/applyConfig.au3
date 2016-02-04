@@ -387,6 +387,31 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkScreenshotLootInfo, $GUI_UNCHECKED)
 	EndIf
 
+	; kodino
+	If $iChkKingWait = 1 Then
+		GUICtrlSetState($chkKingWait, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkKingWait, $GUI_UNCHECKED)
+	EndIf
+	
+	If $iChkQueenWait = 1 Then
+		GUICtrlSetState($chkQueenWait, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkQueenWait, $GUI_UNCHECKED)
+	EndIf
+	
+	If $iChkWardenWait = 1 Then
+		GUICtrlSetState($chkWardenWait, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkWardenWait, $GUI_UNCHECKED)
+	EndIf
+	
+	If $iChkEarthWait = 1 Then
+		GUICtrlSetState($chkEarthWait, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkEarthWait, $GUI_UNCHECKED)
+	EndIf
+	
 	;Attack Adv. Settings--------------------------------------------------------------------------
 	If $ichkAttackNow = 1 Then
 		GUICtrlSetState($chkAttackNow, $GUI_CHECKED)

@@ -351,6 +351,31 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "attack", "ScreenshotLootInfo", 0)
 	EndIf
 
+	;kodino
+	If GUICtrlRead($chkKingWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "KingWait", 1)
+	Else
+		IniWrite($config, "attack", "KingWait", 0)
+	EndIf
+	
+	If GUICtrlRead($chkQueenWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "QueenWait", 1)
+	Else
+		IniWrite($config, "attack", "QueenWait", 0)
+	EndIf
+	
+	If GUICtrlRead($chkWardenWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "WardenWait", 1)
+	Else
+		IniWrite($config, "attack", "WardenWait", 0)
+	EndIf
+	
+	If GUICtrlRead($chkEarthWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "EarthWait", 1)
+	Else
+		IniWrite($config, "attack", "EarthWait", 0)
+	EndIf
+	
 	;End Battle Settings------------------------------------------------------------------------
 	IniWrite($config, "endbattle", "txtTimeStopAtk", GUICtrlRead($txtTimeStopAtk))
 	IniWrite($config, "endbattle", "chkTimeStopAtk", GUICtrlRead($chkTimeStopAtk))

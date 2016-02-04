@@ -199,6 +199,12 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$TakeLootSnapShot = IniRead($config, "attack", "TakeLootSnapShot", "0")
 		$ScreenshotLootInfo = IniRead($config, "attack", "ScreenshotLootInfo", "0")
+		
+		; kodino
+		$iChkKingWait = IniRead($config, "attack", "KingWait", "0")
+		$iChkQueenWait = IniRead($config, "attack", "QueenWait", "0")
+		$iChkWardenWait = IniRead($config, "attack", "WardenWait", "0")
+		$iChkEarthWait = IniRead($config, "attack", "EarthWait", "1")
 
 		;Attack Adv. Settings--------------------------------------------------------------------------
 		$ichkAttackNow = IniRead($config, "advanced", "AttackNow", "0")
