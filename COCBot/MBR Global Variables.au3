@@ -43,6 +43,11 @@
 #include <IE.au3>
 #include <Process.au3>
 
+;kodino
+;#include "kodino\Global Variables_AttackHours.au3"
+#include "kodino\Global Variables HSW.au3"
+;-->kodino
+
 Global Const $DEFAULT_HEIGHT = 780
 Global Const $DEFAULT_WIDTH = 860
 Global Const $midOffsetY = ($DEFAULT_HEIGHT - 720) / 2

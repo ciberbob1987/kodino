@@ -1,7 +1,8 @@
 MyBot.run
 version 5.1.4
-MOD kodino ver 0.4.0 - beta 4
+MOD kodino ver 0.4.1 - beta 4
 authors: kowalsky, Odino.
+release date 01/02/2016
 
 Disclaimer:
 This is a beta testing version. Please report bugs.
@@ -11,6 +12,7 @@ kodino Extreme DE side Extreme EQ-GiBArch csv script is useful for TH9 with lv 6
 Changelog: 
 - Improved CSV attack and EQ spells positioning.
 - Fixed translation files for French, Portuguese, Turkish.
+- Testing "wait for EQ potions"
 
 Old changes:
 0.3.1 - fixed archers and barbarians deploy in kodino Extreme DE side EQ-GiBArch CSV attack script.

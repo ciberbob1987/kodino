@@ -197,6 +197,11 @@ Func runBot() ;Bot that runs everything in order
 			ReArm()
 				If _Sleep($iDelayRunBot3) Then Return
 				If $Restart = True Then ContinueLoop
+			Train()
+				If _Sleep($iDelayRunBot1) Then Return
+				checkMainScreen(False)
+				If $Restart = True Then ContinueLoop
+			If ((($KingWait = 1 and $BarbarianKingAvailable = 1) or $KingWait = 0) and (($QueenWait = 1 and $ArcherQueenAvailable = 1) or $QueenWait = 0) and (($WardenWait = 1 and $GrandWardenAvailable = 1) or $WardenWait = 0) and (($EarthquakeWait = 1 and $EarthquakeAvailable = 1) or $EarthquakeWait = 0)) or $fullArmyHeros = False Then 
 			ReplayShare($iShareAttackNow)
 				If _Sleep($iDelayRunBot3) Then Return
 				If $Restart = True Then ContinueLoop
@@ -206,10 +211,6 @@ Func runBot() ;Bot that runs everything in order
 			DonateCC()
 				If _Sleep($iDelayRunBot1) Then Return
 				checkMainScreen(False) ; required here due to many possible exits
-				If $Restart = True Then ContinueLoop
-			Train()
-				If _Sleep($iDelayRunBot1) Then Return
-				checkMainScreen(False)
 				If $Restart = True Then ContinueLoop
 			BoostBarracks()
 				If $Restart = True Then ContinueLoop
@@ -244,6 +245,7 @@ Func runBot() ;Bot that runs everything in order
 				If _Sleep($iDelayRunBot3) Then Return
 				If $Restart = True Then ContinueLoop
 			Idle()
+				$fullArmyHeros = $fullArmy
 				If _Sleep($iDelayRunBot3) Then Return
 				If $Restart = True Then ContinueLoop
 			SaveStatChkTownHall()
@@ -260,6 +262,11 @@ Func runBot() ;Bot that runs everything in order
 				If _Sleep($iDelayRunBot1) Then Return
 				If $Restart = True Then ContinueLoop
 			EndIf
+		Else
+			SetLog("Waiting Heros to Attack, Skipped.., So Waiting", $COLOR_RED)
+			If _SleepStatus($iDelayWaitHeros) Then Return False
+		EndIf
+		;ModBoju
 
 		Else ;When error occours directly goes to attack
 			If $Is_SearchLimit = True Then
@@ -362,34 +369,41 @@ Func Idle() ;Sequence that runs until Full Army
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
-	If $iChkUseCCBalanced = 1 Then ;launch profilereport() only if option balance D/R it's activated
-		ProfileReport()
-		If _Sleep($iDelayAttackMain1) Then Return
-		checkMainScreen(False)
-		If $Restart = True Then Return
+
+	If (($KingWait = 1 and $BarbarianKingAvailable = 1) or $KingWait = 0) and (($QueenWait = 1 and $ArcherQueenAvailable = 1) or $QueenWait = 0) and (($WardenWait = 1 and $GrandWardenAvailable = 1) or $WardenWait = 0) and (($EarthquakeWait = 1 and $EarthquakeAvailable = 1) or $EarthquakeWait = 0) Then 
+		$fullArmyHeros = False
+		If $iChkUseCCBalanced = 1 Then ;launch profilereport() only if option balance D/R it's activated
+			ProfileReport()
+			If _Sleep($iDelayAttackMain1) Then Return
+			checkMainScreen(False)
+			If $Restart = True Then Return
+		EndIf
+		If Number($iTrophyCurrent) > Number($iTxtMaxTrophy) Then ;If current trophy above max trophy, try drop first
+			DropTrophy()
+			$Is_ClientSyncError = False ; reset OOS flag to prevent looping.
+			If _Sleep($iDelayAttackMain1) Then Return
+			Return ; return to runbot, refill armycamps
+		EndIf
+		PrepareSearch()
+			If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
+			If $Restart = True Then Return
+		VillageSearch()
+			If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
+			If $Restart = True Then Return
+		PrepareAttack($iMatchMode)
+			If $Restart = True Then Return
+		;checkDarkElix()
+		;DEAttack()
+		;	If $Restart = True Then Return
+		Attack()
+			If $Restart = True Then Return
+		ReturnHome($TakeLootSnapShot)
+			If _Sleep($iDelayAttackMain2) Then Return
+		Return True
+	Else
+		SetLog("Waiting Heros/Spells to Attack, Skipped..", $COLOR_RED)
 	EndIf
-	If Number($iTrophyCurrent) > Number($iTxtMaxTrophy) Then ;If current trophy above max trophy, try drop first
-		DropTrophy()
-		$Is_ClientSyncError = False ; reset OOS flag to prevent looping.
-		If _Sleep($iDelayAttackMain1) Then Return
-		Return ; return to runbot, refill armycamps
-	EndIf
-	PrepareSearch()
-		If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
-		If $Restart = True Then Return
-	VillageSearch()
-		If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
-		If $Restart = True Then Return
-	PrepareAttack($iMatchMode)
-		If $Restart = True Then Return
-	;checkDarkElix()
-	;DEAttack()
-	;	If $Restart = True Then Return
-	Attack()
-		If $Restart = True Then Return
-	ReturnHome($TakeLootSnapShot)
-		If _Sleep($iDelayAttackMain2) Then Return
-	Return True
+	;ModBoju+kowalsky
 EndFunc   ;==>AttackMain
 
 Func Attack() ;Selects which algorithm
@@ -400,5 +414,4 @@ Func Attack() ;Selects which algorithm
 		algorithm_AllTroops()
 	EndIf
 EndFunc   ;==>Attack
-
 

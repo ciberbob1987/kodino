@@ -1,0 +1,6 @@
+#include "functions\applyConfig.au3"
+#include "functions\readConfig.au3"
+#include "functions\saveConfig.au3"
+#include "functions\Config_HSW\applyConfig.au3"
+#include "functions\Config_HSW\readConfig.au3"
+#include "functions\Config_HSW\saveConfig.au3"

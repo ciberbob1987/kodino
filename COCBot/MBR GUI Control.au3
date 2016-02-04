@@ -5,7 +5,7 @@
 ; Parameters ....: None
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
-; Modified ......: Hervidero (2015), kaganus (August-2015)
+; Modified ......: Hervidero (2015), kaganus (August-2015), kowalsky87 (2016)
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
@@ -56,7 +56,11 @@ AtkLogHead()
 #include "GUI\MBR GUI Control Tab Misc.au3"
 #include "GUI\MBR GUI Control Tab Upgrade.au3"
 #include "GUI\MBR GUI Control Tab Notify.au3"
-#include "GUI\MBR GUI Control Tab Expert.au3"
+;#include "GUI\MBR GUI Control Tab Expert.au3"
+;#include "kodino\GUI_AttackHours\MBR GUI Control Tab Expert.au3"
+;#include "kodino\GUI_AttackHours\MBR GUI Control Tab Scheduler.au3"
+#include "kodino\GUI_HSW\MBR GUI Control Tab Expert.au3"
+#include "kodino\GUI_HSW\MBR GUI Control Tab Scheduler.au3"
 #include "GUI\MBR GUI Control Tab Stats.au3"
 #include "GUI\MBR GUI Control Collectors.au3"
 

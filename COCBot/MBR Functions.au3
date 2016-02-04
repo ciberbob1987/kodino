@@ -5,13 +5,18 @@
 ; Parameters ....: None
 ; Return values .: None
 ; Author ........:
-; Modified ......:
+; Modified ......: kowalsky87 (2016)
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
+;kodino
+;#include "kodino\MBR Functions_AttackHours.au3"
+#include "kodino\MBR Functions HSW.au3"
+;-->kodino
 
 #include "functions\Config\applyConfig.au3"
 #include "functions\Config\readConfig.au3"
